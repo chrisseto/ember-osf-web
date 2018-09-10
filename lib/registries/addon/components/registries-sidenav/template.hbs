@@ -1,0 +1,21 @@
+{{yield (hash
+    toggle=(action 'toggle')
+    collapsed=this.collapsed
+
+    links=(component 'registries-sidenav/x-links' collapsed=this.collapsed)
+    toggle=(component 'registries-sidenav/x-toggle' collapsed=this.collapsed toggle=(action 'toggle'))
+    content=(component 'registries-sidenav/x-content' collapsed=this.collapsed)
+
+    link=(component
+        'registries-sidenav/x-navlink'
+        collapsed=this.collapsed
+    )
+
+    toggler=(component
+        'registries-sidenav/x-navlink'
+        this.togglerIcon
+        this.togglerText
+        click=(action 'toggle')
+        collapsed=this.collapsed
+    )
+)}}

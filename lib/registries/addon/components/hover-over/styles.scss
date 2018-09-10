@@ -1,0 +1,30 @@
+.Container {
+    cursor: pointer;
+    height: 30px;
+    position: relative;
+}
+
+.HoverOver {
+    display: inline-flex;
+
+}
+
+.HoverOver--Collapsed:not(:hover) > .Label {
+    display: none;
+}
+
+
+.HoverOver--Collapsed:hover {
+    align-items: center;
+    left: -20px;
+    bottom: -2px;
+    border-radius: 2px;
+    padding: 5px 10px;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px 0 #828282;
+}
+
+.Icon {
+    margin-right: 5px;
+}

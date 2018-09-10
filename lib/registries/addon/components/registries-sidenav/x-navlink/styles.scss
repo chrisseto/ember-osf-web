@@ -1,0 +1,48 @@
+$color: #337ab7;
+$color-hover: #15a5eb;
+$color-active: #365063;
+
+
+.Container {
+    cursor: pointer;
+    height: 30px;
+    position: relative;
+    color: $color;
+
+    &.Active,
+    &.Active:hover {
+        color: $color-active;
+    }
+
+    &:hover {
+        color: $color-hover;
+    }
+}
+
+.HoverOver {
+    display: inline-flex;
+
+}
+
+
+
+.Container:not(.Active) {
+    .HoverOver.Collapsed:not(:hover) > .Label {
+        display: none;
+    }
+
+    .HoverOver.Collapsed:hover {
+        align-items: center;
+        left: -20px;
+        top: -2px;
+        border-radius: 2px;
+        padding: 5px 10px;
+        position: absolute;
+        background-color: #fff;
+        box-shadow: 2px 2px 5px 0 #828282;
+    }
+}
+
+.Icon {
+    margin-right: 5px;
+}

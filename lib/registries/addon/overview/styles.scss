@@ -1,0 +1,42 @@
+.Container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+}
+
+
+.Parent {
+    display: inline-block;
+    color: #337ab7;
+
+    &:hover {
+        align-items: center;
+        left: -20px;
+        bottom: -2px;
+        color: #15a5eb;
+        border-radius: 2px;
+        padding: 5px 10px;
+        position: absolute;
+        display: inline-flex;
+        background-color: #fff;
+        box-shadow: 2px 2px 5px 0 #828282;
+    }
+
+    &:hover > .Content {
+        display: block;
+    }
+
+    &:hover > .Preview {
+        margin-right: 5px;
+    }
+
+    & > .Content {
+        display: none;
+    }
+}
+
+.Link {
+    margin: 10px;
+    position: relative;
+    height: 30px;
+}

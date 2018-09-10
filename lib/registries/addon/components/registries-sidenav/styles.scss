@@ -1,0 +1,23 @@
+$sidenav-bg-color: #eef3f7;
+$width-expanded: 15em;
+$width-collapsed: 5em;
+
+.SideNav {
+    padding: 20px;
+    background-color: $sidenav-bg-color;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: $width-expanded;
+    align-items: flex-start;
+
+    & > div {
+        margin: 5px 0;
+    }
+}
+
+.SideNav--Collapsed {
+    align-items: center;
+    flex-basis: $width-collapsed;
+}

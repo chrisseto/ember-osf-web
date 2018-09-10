@@ -5,6 +5,7 @@
     "ember-engine"
   ],
   "dependencies": {
+    "ember-awesome-macros": "*",
     "ember-bootstrap": "*",
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",

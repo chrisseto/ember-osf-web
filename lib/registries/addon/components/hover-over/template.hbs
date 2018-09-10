@@ -1,0 +1,18 @@
+<div local-class="HoverOver {{if this.collapsed 'HoverOver--Collapsed'}}">
+    {{yield (hash
+        icon=(component 'hover-over/x-container'
+            class= (local-class 'Icon')
+        )
+        label=(component 'hover-over/x-container'
+            class= (local-class 'Label')
+        )
+    )}}
+</div>
+
+        {{!-- label=(component 'hover-over/x-container' --}}
+        {{!--     class=(concat --}}
+        {{!--         (local-class 'Label') --}}
+        {{!--         ' ' --}}
+        {{!--         (if this.collapsed (local-class 'Label--Collapsed')) --}}
+        {{!--     ) --}}
+        {{!-- ) --}}
