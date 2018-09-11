@@ -1,9 +1,23 @@
-<div local-class="HoverOver {{if this.collapsed 'Collapsed'}} {{if this.active 'Active'}}">
-    <div local-class="Icon">
-        {{fa-icon this.icon fixedWidth=true}}
+<div local-class="Container {{if this.collapsed 'Collapsed'}} {{if this.active 'Active'}}">
+    <div local-class="Entry Preview HoverOverContainer">
+        <a {{action 'clicked'}} role="button" local-class="HoverOver Preview">
+            {{fa-icon this.icon fixedWidth=true class=(local-class 'Icon Preview')}}
+            <strong local-class="Label">{{this.label}}</strong>
+
+            {{#if hasBlock}}
+                {{fa-icon this.expandIcon fixedWidth=true}}
+            {{/if}}
+        </a>
+
+
+        <span local-class="Count">
+            {{#if hasCount}}
+                {{this.count}}
+            {{/if}}
+        </span>
     </div>
 
-    <div local-class="Label">
-        <strong>{{this.label}}</strong>
+    <div local-class="Entry Sub {{if (not this.showSubmenu) 'Hidden'}}">
+        {{yield}}
     </div>
 </div>

@@ -4,7 +4,7 @@ $width-collapsed: 5em;
 
 .SideNav {
     padding: 20px;
-    background-color: $sidenav-bg-color;
+    border-right: $alto 1px solid;
     display: flex;
     flex-direction: column;
     flex-grow: 0;

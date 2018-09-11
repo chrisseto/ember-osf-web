@@ -2,18 +2,20 @@
     {{#registries-sidenav as |nav|}}
         {{nav.link 'home' 'OVERVIEW' active=true}}
         {{nav.link 'file-text' 'FILES'}}
-        {{nav.link 'window-maximize' 'WIKI'}}
-        {{nav.link 'puzzle-piece' 'COMPONENTS'}}
-        {{nav.link 'link' 'LINKS'}}
+        {{nav.link 'window-maximize' 'WIKI' count=0}}
+        {{nav.link 'puzzle-piece' 'COMPONENTS' count=3}}
+        {{#nav.link 'link' 'LINKS' count=2 as |test|}}
+            This Is A test
+        {{/nav.link}}
         {{nav.link 'bar-chart' 'ANALYTICS'}}
         {{nav.link 'comments' 'COMMENTS'}}
-
-        {{nav.toggler}}
 
         {{#nav.content}}
             I'm Content!
 
         {{/nav.content}}
+
+        {{nav.toggler}}
 
     {{/registries-sidenav}}
 

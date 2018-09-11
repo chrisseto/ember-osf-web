@@ -1,11 +1,11 @@
-import { layout } from '@ember-decorators/component';
+import { layout, tagName } from '@ember-decorators/component';
+import { action, computed } from '@ember-decorators/object';
 import Component from '@ember/component';
-import { localClassName, localClassNames } from 'ember-osf-web/decorators/css-modules';
 import defaultTo from 'ember-osf-web/utils/default-to';
 import template from './template';
 
+@tagName('')
 @layout(template)
-@localClassNames('Container')
 export default class NavLink extends Component {
     static positionalParams = ['icon', 'label'];
 
@@ -13,8 +13,28 @@ export default class NavLink extends Component {
 
     icon!: string;
     label!: string;
-    collapsed: boolean = defaultTo(this.collapsed, false);
+    count?: number;
 
-    @localClassName('Active')
     active: boolean = defaultTo(this.active, false);
+    collapsed: boolean = defaultTo(this.collapsed, false);
+    showSubmenu: boolean = defaultTo(this.showSubmenu, false);
+
+    @computed('count')
+    get hasCount() {
+        return this.count !== undefined;
+    }
+
+    @computed('showSubmenu')
+    get expandIcon() {
+        return this.showSubmenu ? 'caret-up' : 'caret-down';
+    }
+
+    onclick() {
+        this.set('showSubmenu', !this.showSubmenu);
+    }
+
+    @action
+    clicked() {
+        this.onclick();
+    }
 }

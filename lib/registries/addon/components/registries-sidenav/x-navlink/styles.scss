@@ -1,48 +1,71 @@
-$color: #337ab7;
-$color-hover: #15a5eb;
-$color-active: #365063;
-
-
 .Container {
-    cursor: pointer;
-    height: 30px;
-    position: relative;
-    color: $color;
-
-    &.Active,
-    &.Active:hover {
-        color: $color-active;
-    }
-
-    &:hover {
-        color: $color-hover;
-    }
+    display: flex;
+    width: 100%;
+    flex-direction: column;
 }
 
-.HoverOver {
+.Entry {
     display: inline-flex;
-
+    width: 100%;
 }
 
+.Icon {
+    margin-right: 5px;
+}
 
+.Count {
+    color: $slate-gray;
+    margin-left: auto;
+}
 
-.Container:not(.Active) {
-    .HoverOver.Collapsed:not(:hover) > .Label {
+.Sub {
+    margin-left: 25px;
+}
+
+.Collapsed {
+    & *:not(.Preview) {
         display: none;
     }
 
-    .HoverOver.Collapsed:hover {
+    &:not(.Active) .HoverOver:hover {
         align-items: center;
-        left: -20px;
+        left: -10px;
         top: -2px;
         border-radius: 2px;
         padding: 5px 10px;
         position: absolute;
         background-color: #fff;
         box-shadow: 2px 2px 5px 0 #828282;
+
+        // Allow Label to display on hover
+        & > .Label {
+            display: initial;
+        }
     }
 }
 
-.Icon {
-    margin-right: 5px;
+.HoverOverContainer {
+    height: 30px;
+    position: relative;
+}
+
+.HoverOver {
+    color: $primary-blue;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+
+    &:hover {
+        color: $secondary-blue;
+        text-decoration: none;
+    }
+
+    .Active &,
+    .Active &:hover {
+        color: $midnight-blue;
+    }
+}
+
+.Hidden {
+    display: none;
 }
