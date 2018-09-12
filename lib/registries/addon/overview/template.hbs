@@ -1,7 +1,11 @@
+<div local-class="Title">
+    <h1>Title Place Holder</h1>
+</div>
+
 <div local-class="Container">
     {{#registries-sidenav as |nav|}}
         {{nav.link 'home' 'OVERVIEW' active=true}}
-        {{nav.link 'file-text' 'FILES'}}
+        {{nav.link 'file-text' 'FILES' count=50}}
         {{nav.link 'window-maximize' 'WIKI' count=0}}
         {{nav.link 'puzzle-piece' 'COMPONENTS' count=3}}
         {{#nav.link 'link' 'LINKS' count=2 as |test|}}
@@ -19,7 +23,11 @@
 
     {{/registries-sidenav}}
 
-    <div>
+    <div local-class="Body">
         Page Content Place Holder
+    </div>
+
+    <div local-class="Metadata">
+        Meta Data Place Holder
     </div>
 </div>

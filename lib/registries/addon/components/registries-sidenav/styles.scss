@@ -3,6 +3,7 @@ $width-expanded: 15em;
 $width-collapsed: 5em;
 
 .SideNav {
+    background: $white;
     padding: 20px;
     border-right: $alto 1px solid;
     display: flex;
@@ -14,6 +15,18 @@ $width-collapsed: 5em;
 
     & > div {
         margin: 5px 0;
+    }
+
+    z-index: 10;
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 1px;
+        bottom: 1px;
+        left: 1px;
+        right: 1px;
+        border: green 10px solid;
     }
 }
 

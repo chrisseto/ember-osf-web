@@ -1,4 +1,4 @@
-import { attribute, tagName } from '@ember-decorators/component';
+import { attribute, layout, tagName } from '@ember-decorators/component';
 import { action } from '@ember-decorators/object';
 import Component from '@ember/component';
 import { localClassNames, localClassName } from 'ember-osf-web/decorators/css-modules';
@@ -7,12 +7,10 @@ import { conditional, raw, toStr } from 'registries/macros'
 import styles from './styles';
 import template from './template';
 
-
-// @layout(template)
+@layout(template)
 @tagName('div')
 @localClassNames('SideNav')
 export default class SideNav extends Component {
-    layout = template;
     styles = styles;
 
     @attribute 'data-test-sidenav' = true;

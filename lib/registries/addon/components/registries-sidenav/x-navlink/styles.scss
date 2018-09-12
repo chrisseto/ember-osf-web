@@ -47,6 +47,7 @@
 .HoverOverContainer {
     height: 30px;
     position: relative;
+
 }
 
 .HoverOver {
@@ -54,6 +55,21 @@
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
+
+    // &::before {
+    //     content: ' ';
+    //     border: black 10px solid;
+    // }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 1px;
+        bottom: 1px;
+        left: 1px;
+        right: 1px;
+        border: green 2px solid;
+    }
 
     &:hover {
         color: $secondary-blue;

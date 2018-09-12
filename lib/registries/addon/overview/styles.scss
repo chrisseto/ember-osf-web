@@ -1,42 +1,22 @@
+.Title {
+    height: 120px;
+    background-color: $midnight-blue;
+}
+
 .Container {
     display: flex;
     min-height: 100vh;
     flex-direction: row;
+    justify-content: space-between;
+
+    padding: 0 15px;
+    background: antiquewhite;
 }
 
-
-.Parent {
-    display: inline-block;
-    color: #337ab7;
-
-    &:hover {
-        align-items: center;
-        left: -20px;
-        bottom: -2px;
-        color: #15a5eb;
-        border-radius: 2px;
-        padding: 5px 10px;
-        position: absolute;
-        display: inline-flex;
-        background-color: #fff;
-        box-shadow: 2px 2px 5px 0 #828282;
-    }
-
-    &:hover > .Content {
-        display: block;
-    }
-
-    &:hover > .Preview {
-        margin-right: 5px;
-    }
-
-    & > .Content {
-        display: none;
-    }
+.Body {
+    background: $white;
 }
 
-.Link {
-    margin: 10px;
-    position: relative;
-    height: 30px;
+.Metadata {
+    background: $white;
 }
