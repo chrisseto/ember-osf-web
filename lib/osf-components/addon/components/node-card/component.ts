@@ -43,12 +43,11 @@ export default class NodeCard extends Component {
                     ).firstObject),
                     undefined,
                 );
-
             if (titleQuestion && typeof registration.registeredMeta === 'object' &&
                 titleQuestion.qid in registration.registeredMeta) {
                 const answer = registration.registeredMeta[titleQuestion.qid];
                 if ('value' in answer) {
-                    return (answer as Answer).value;
+                    return (answer as Answer<string>).value;
                 }
             }
         }

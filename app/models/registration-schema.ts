@@ -8,8 +8,8 @@ import OsfModel from './osf-model';
 
 interface Q {
     type: 'string' | 'multiselect' | 'osf-author-import' | 'osf-upload' | 'choose' | 'object';
+    format: string;
     required?: boolean;
-    description?: string;
     properties?: Subquestion[];
 }
 
@@ -19,10 +19,10 @@ export interface Subquestion extends Q {
 
 export interface Question extends Q {
     qid: string;
-    format: string;
     title: string;
     nav: string;
     help?: string;
+    description: string;
 }
 
 export interface Page {
@@ -45,16 +45,14 @@ export interface Schema {
     description: string;
 }
 
-export interface Answer {
-    value?: string;
-}
-
-export interface Answers {
-    [id: string]: Answer;
+export interface Answer<T> {
+    comments: any[]; // String?
+    extra: object[];
+    value?: T;
 }
 
 export interface RegistrationMetadata {
-    [qid: string]: Answer | Answers;
+    [qid: string]: Answer<string | RegistrationMetadata>;
 }
 
 /**

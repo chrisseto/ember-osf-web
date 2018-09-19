@@ -6,7 +6,7 @@ import { htmlSafe } from '@ember/string';
 import config from 'ember-get-config';
 
 import DraftRegistration from 'ember-osf-web/models/draft-registration';
-import { Answer, Answers } from 'ember-osf-web/models/registration-schema';
+import { RegistrationMetadata } from 'ember-osf-web/models/registration-schema';
 import Analytics from 'ember-osf-web/services/analytics';
 import pathJoin from 'ember-osf-web/utils/path-join';
 
@@ -55,8 +55,8 @@ export default class DraftRegistrationCard extends Component {
                     question.properties.forEach(property => {
                         if (property.required) {
                             requiredQuestions++;
-                            if (question.qid in metadata) {
-                                const answers = metadata[question.qid] as Answers;
+                            if (question.qid in metadata && metadata[question.qid].value) {
+                                const answers = metadata[question.qid].value! as RegistrationMetadata;
                                 if (property.id in answers && 'value' in answers[property.id]) {
                                     const { value } = answers[property.id];
                                     if (value && value.length) {
@@ -69,7 +69,7 @@ export default class DraftRegistrationCard extends Component {
                 } else if (question.required) {
                     requiredQuestions++;
                     if (question.qid in metadata && 'value' in metadata[question.qid]) {
-                        const { value } = metadata[question.qid] as Answer;
+                        const { value } = metadata[question.qid];
                         if (value && value.length) {
                             answeredRequiredQuestions++;
                         }
