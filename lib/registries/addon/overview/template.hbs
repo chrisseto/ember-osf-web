@@ -1,33 +1,41 @@
-<div local-class="Title">
-    <h1>Title Place Holder</h1>
-</div>
+{{registries-title}}
 
-<div local-class="Container">
-    {{#registries-sidenav as |nav|}}
-        {{nav.link 'home' 'OVERVIEW' active=true}}
-        {{nav.link 'file-text' 'FILES' count=50}}
-        {{nav.link 'window-maximize' 'WIKI' count=0}}
-        {{nav.link 'puzzle-piece' 'COMPONENTS' count=3}}
-        {{#nav.link 'link' 'LINKS' count=2 as |test|}}
-            This Is A test
-        {{/nav.link}}
-        {{nav.link 'bar-chart' 'ANALYTICS'}}
-        {{nav.link 'comments' 'COMMENTS'}}
+{{#if this.showMobileNav}}
+    {{registries-mobile-nav
+        toggleSidenav=(action 'toggleSidenav')
+        toggleMetadata=(action 'toggleMetadata')
+    }}
+{{/if}}
 
-        {{#nav.content}}
-            I'm Content!
+<div local-class="Container {{if (media 'isDesktop') 'Desktop'}}">
 
-        {{/nav.content}}
+    {{#side-gutter 'left' closed=this.sidenavGutterClosed mode=this.sidenavGutterMode}}
+        {{#registries-sidenav class=(local-class 'SideNav') as |nav|}}
+            {{nav.link 'home' 'OVERVIEW' active=true}}
+            {{nav.link 'file-text' 'FILES' count=50}}
+            {{nav.link 'window-maximize' 'WIKI' count=0}}
+            {{nav.link 'puzzle-piece' 'COMPONENTS' count=3}}
+            {{#nav.link 'link' 'LINKS' count=2 as |test|}}
+                This Is A test
+            {{/nav.link}}
+            {{nav.link 'bar-chart' 'ANALYTICS'}}
+            {{nav.link 'comments' 'COMMENTS'}}
 
-        {{nav.toggler}}
+            {{#nav.content}}
+                I'm Content!
+            {{/nav.content}}
 
-    {{/registries-sidenav}}
+            {{nav.toggler}}
 
-    <div local-class="Body">
-        Page Content Place Holder
+        {{/registries-sidenav}}
+    {{/side-gutter}}
+
+
+    <div local-class="Body {{this.animationClass}}">
+        {{registration-schema-view this.model.registrationSchema.schema this.model.registeredMeta}}
     </div>
 
-    <div local-class="Metadata">
-        Meta Data Place Holder
-    </div>
+    {{#side-gutter 'right' closed=this.metadataGutterClosed mode=this.metadataGutterMode}}
+        {{registries-metadata}}
+    {{/side-gutter}}
 </div>

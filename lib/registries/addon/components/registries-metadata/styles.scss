@@ -1,0 +1,39 @@
+.Metadata {
+    background: $white;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    // flex-basis: 300px;
+    width: 300px;
+
+    :global(.Page) & {
+        width: 100%;
+    }
+}
+
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    height: 20px;
+}
+
+.Title {
+    margin: 0;
+
+    :global(.Column) & {
+        display: none;
+    }
+}
+
+.Close {
+    display: inline-flex;
+
+    :global(.Page) & {
+        display: none;
+    }
+}

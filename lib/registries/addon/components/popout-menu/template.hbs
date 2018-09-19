@@ -1,0 +1,34 @@
+<div local-class="Container">
+
+    <button {{action 'toggle'}} class="{{local-class 'ButtonSecondary' from='registries/styles/ui'}}">
+        {{fa-icon 'bars'}}
+    </button>
+
+    <nav local-class="Nav {{if this.expanded 'Expanded'}}">
+        <div local-class="Header">
+            <strong>CONTENTS</strong>
+            <button {{action 'toggle'}} local-class="CloseButton">
+                {{fa-icon 'times'}}
+            </button>
+        </div>
+
+        <div local-class="Body">
+
+            <strong>Study Information</strong>
+            <ul>
+                <li>Title</li>
+                <li>Authors</li>
+                <li>Research Questions</li>
+            </ul>
+
+            <strong>Sampling Data</strong>
+            <ul>
+                <li>Existing Data</li>
+                <li>Explanation</li>
+                <li>Something Really Long</li>
+            </ul>
+
+        </div>
+    </nav>
+</div>
+

@@ -1,22 +1,25 @@
-.Title {
-    height: 120px;
-    background-color: $midnight-blue;
-}
-
 .Container {
     display: flex;
-    min-height: 100vh;
     flex-direction: row;
     justify-content: space-between;
 
-    padding: 0 15px;
-    background: antiquewhite;
+    &.Desktop {
+        padding: 0 15px;
+        background-image: url('img/bg-light.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }
 
 .Body {
+    // Required for gutters and animations to work nicely
+    composes: Parent from 'registries/components/side-gutter/styles';
+
     background: $white;
+    flex-grow: 1;
+    padding: 0 30px;
 }
 
-.Metadata {
-    background: $white;
+.SlideRight {
+    composes: SlideRight from 'registries/components/side-gutter/styles';
 }

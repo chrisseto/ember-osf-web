@@ -1,0 +1,50 @@
+.Container {
+    display: initial;
+    position: relative;
+}
+
+.CloseButton {
+    composes: ButtonSecondary from 'registries/styles/ui';
+
+    border: none;
+
+    &:hover {
+        background: $white;
+    }
+}
+
+.Nav {
+    background-color: $white;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    right: -10px;
+    top: -5px;
+    width: 200px;
+    z-index: 500;
+
+    &:not(.Expanded) {
+        display: none;
+    }
+}
+
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+
+    border-bottom: $alto 1px solid;
+    color: $midnight-blue;
+}
+
+.Body {
+    padding: 15px;
+    max-height: 250px;
+    overflow: auto;
+
+    & > ul {
+        list-style: none;
+        padding-left: 0;
+    }
+}

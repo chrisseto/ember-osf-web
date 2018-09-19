@@ -15,6 +15,7 @@
     "ember-cli-sass": "*",
     "ember-cli-template-lint": "*",
     "ember-cli-typescript": "*",
+    "ember-component-attributes": "*",
     "ember-css-modules": "*",
     "ember-css-modules-sass": "*",
     "ember-decorators": "*",
@@ -24,10 +25,12 @@
     "ember-moment": "*",
     "ember-page-title": "*",
     "ember-parachute": "*",
+    "ember-responsive": "*",
     "ember-test-selectors": "*",
     "ember-toastr": "*",
     "ember-truth-helpers": "*",
-    "immutable": "*"
+    "immutable": "*",
+    "intersection-observer": "*"
   },
   "ember-addon": {
     "paths": [

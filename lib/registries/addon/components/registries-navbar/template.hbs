@@ -1,0 +1,62 @@
+<header local-class="Navbar">
+
+    <span local-class="Brand">
+
+        {{#global-link-to 'home' (html-attributes aria-label=(t 'navbar.go_home'))}}
+            <div local-class="Logo"></div>
+        {{/global-link-to}}
+
+        {{#link-to 'index' class=(local-class 'Service')}}
+            {{#unless (media 'isMobile')}}
+                <span>{{t 'general.OSF'}}</span>
+            {{/unless}}
+            <strong>REGISTRIES</strong>
+        {{/link-to}}
+
+        {{#bs-dropdown as |dd|}}
+
+            {{#dd.toggle classNames=(local-class 'Toggle')}}
+                {{fa-icon (if dd.isOpen 'caret-up' 'caret-down') fixedWidth=true}}
+            {{/dd.toggle}}
+
+            {{#dd.menu classNames=(local-class 'ServiceList') as |ddm|}}
+                {{#each services as |service|}}
+                    {{#ddm.item (html-attributes role='menuitem')}}
+                        {{#hyper-link service.route}}
+                            <strong local-class="Service">{{service.name}}</strong>
+                        {{/hyper-link}}
+                    {{/ddm.item}}
+                {{/each}}
+            {{/dd.menu}}
+
+        {{/bs-dropdown}}
+
+    </span>
+
+
+    <div local-class="Content">
+
+        {{#if (media 'isMobile')}}
+            <a {{action 'toggleMobileSearch'}} role="button" local-class="MobileSearchButton">
+                {{fa-icon 'search' fixedWidth=true}}
+            </a>
+        {{else}}
+            {{icon-input 'search' class=(local-class 'SearchBar') dark=true enter=(action '_onSearch')}}
+
+            <a href={{this.helpRoute}} local-class="ButtonPrimary">{{t 'general.help'}}</a>
+            <a href={{this.donateRoute}} local-class="ButtonSucess">{{t 'navbar.donate'}}</a>
+        {{/if}}
+
+        {{#bs-dropdown classNames=(local-class 'Center') as |dd|}}
+            {{#dd.toggle classNames=(local-class 'Center')}}
+                <img local-class="Gravatar" src="{{currentUser.user.profileImage}}&s=30">
+                {{fa-icon 'caret-down' fixedWidth=true class=(local-class 'Toggle')}}
+            {{/dd.toggle}}
+        {{/bs-dropdown}}
+    </div>
+
+</header>
+
+{{#if (and this.showMobileSearchBox (media 'isMobile'))}}
+    {{icon-input 'search' class=(local-class 'MobileSearchBar') dark=true enter=(action '_onSearch')}}
+{{/if}}

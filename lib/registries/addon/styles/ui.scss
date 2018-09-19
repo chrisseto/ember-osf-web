@@ -1,0 +1,85 @@
+%BorderRadius {
+    border-radius: 2px;
+}
+
+%NoFocusOutline {
+    &:focus {
+        outline: none;
+    }
+}
+
+
+//// Buttons ////
+
+.Button {
+    @extend %BorderRadius;
+    @extend %NoFocusOutline;
+
+    border: 0;
+    color: $white;
+    font-size: 14px;
+    height: 30px;
+    padding: 4px 10px;
+    text-align: center;
+    font-weight: 700;
+
+    &:active,
+    &:hover {
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+.ButtonPrimary {
+    composes: Button;
+
+    background-color: $primary-blue;
+
+    &:active,
+    &:hover {
+        background-color: $secondary-blue;
+    }
+}
+
+.ButtonSecondary {
+    composes: Button;
+
+    color: $primary-blue;
+    background-color: $white;
+    border: $alto 1px solid;
+
+    &:active,
+    &:hover {
+        color: $secondary-blue;
+        background-color: $porcelain;
+    }
+}
+
+.ButtonSucess {
+    composes: Button;
+
+    background-color: $primary-green;
+
+    &:active,
+    &:hover {
+        background-color: $secondary-green;
+    }
+}
+
+//// /Buttons ////
+
+.Input {
+    @extend %BorderRadius;
+    @extend %NoFocusOutline;
+
+    background-color: $porcelain;
+    border: 0;
+    height: 30px;
+}
+
+.InputDark {
+    composes: Input;
+
+    color: $white;
+    background-color: $dark-slate-gray;
+}

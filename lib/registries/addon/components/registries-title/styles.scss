@@ -1,0 +1,19 @@
+.Title {
+    display: flex;
+    flex-direction: column;
+    z-index: 50;
+
+    height: 120px;
+    padding: 0 15px;
+    color: $white;
+
+    background-image: url('img/bg-dark.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transition: all 0.4s ease;
+
+    &.Collapsed {
+        height: 95px;
+    }
+}

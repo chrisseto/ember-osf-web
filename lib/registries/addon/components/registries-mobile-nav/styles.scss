@@ -1,0 +1,24 @@
+.Nav {
+    background: $porcelain;
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    padding: 0 5px;
+
+
+    & a[role="button"] {
+        padding: 15px;
+        color: $primary-blue;
+    }
+}
+
+.Section {
+    display: flex;
+    align-items: center;
+}
+
+.Divider {
+    background: white;
+    height: 100%;
+    width: 1px;
+}
