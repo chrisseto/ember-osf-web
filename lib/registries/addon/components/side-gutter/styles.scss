@@ -1,0 +1,70 @@
+// Compose in the consuming component for proper animations
+.Parent {
+    transition: transform 0.4s;
+
+    &.SlideRight {
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    &.SlideLeft {
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+.Container {
+    // Make things animated
+    transition: all 0.4s;
+
+    background: $white;
+
+    &:global(.Column) { }
+
+    &:global(.Drawer) {
+        z-index: 20;
+        height: 100vh;
+        position: fixed;
+        overflow-y: auto;
+        transform: translate3d(0, 0, 0);
+
+        &.Right.Open {
+            box-shadow: -5px 0 5px -4px rgba(0, 0, 0, 0.2);
+            // box-shadow: -5px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        &.Left.Open {
+            box-shadow: 5px 0 5px -4px rgba(0, 0, 0, 0.2);
+            // box-shadow: 5px 1px 5px rgba(0, 0, 0, 0.2);
+        } }
+
+    &:global(.Page) {
+        width: 100%;
+        position: absolute;
+    }
+}
+
+.Right {
+    border-left: $alto 1px solid;
+}
+
+.Left {
+    border-right: $alto 1px solid;
+}
+
+.Container:not(:global(.Column)) {
+    &.Right {
+        right: 0;
+    }
+
+    &.Right.Closed {
+        transform: translate3d(100%, 0, 0);
+    }
+
+    &.Left {
+        left: 0;
+    }
+
+    &.Left.Closed {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
