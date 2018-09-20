@@ -37,43 +37,70 @@
             {{icon-input 'search' dark=true enter=(action '_onSearch')}}
         {{/nav.item}}
 
-        {{#nav.link classNames=(local-class 'HideOnMobile') href=this.helpRoute}}
+        {{#nav.links.secondary classNames=(local-class 'HideOnMobile') href=this.helpRoute}}
             <h4>{{t 'general.help'}}</h4>
-        {{/nav.link}}
+        {{/nav.links.secondary}}
 
-        {{#nav.link classNames=(local-class 'HideOnMobile') href=this.donateRoute}}
+        {{#nav.links.primary classNames=(local-class 'HideOnMobile') href=this.donateRoute}}
             <h4>{{t 'navbar.donate'}}</h4>
-        {{/nav.link}}
+        {{/nav.links.primary}}
 
-        {{nav.divider classNames=(local-class 'HideOnMobile')}}
+        {{#if session.isAuthenticated}}
 
-        {{#nav.item}}
-            {{#bs-dropdown as |dd|}}
-                {{#dd.toggle classNames=(local-class 'Dropdown')}}
-                    <img alt="User gravatar" local-class="Gravatar1" src="{{currentUser.user.profileImage}}&s=30">
-                    {{nav.icon (if dd.isOpen 'caret-up' 'caret-down')}}
-                {{/dd.toggle}}
+            {{#nav.item}}
+                {{#bs-dropdown as |dd|}}
+                    {{#dd.toggle classNames=(local-class 'Dropdown')}}
+                        <img alt="{{t 'auth_dropdown.user_gravatar'}}" local-class="Gravatar1" src="{{currentUser.user.profileImage}}&s=30">
+                        {{nav.icon (if dd.isOpen 'caret-up' 'caret-down')}}
+                    {{/dd.toggle}}
 
-                {{#dd.menu as |ddm|}}
-                    {{#ddm.item}}
-                        Test Data
-                    {{/ddm.item}}
-                {{/dd.menu}}
-            {{/bs-dropdown}}
-        {{/nav.item}}
+                    {{#dd.menu classNames='dropdown-menu-right' as |ddm|}}
+                        {{#ddm.item (html-attributes role='menuitem')}}
+                            <a href="{{profileURL}}" onclick={{action 'click' 'link' 'Navbar - MyProfile' target=analytics}}>
+                                {{fa-icon 'user'}}
+                                {{t 'auth_dropdown.my_profile'}}
+                            </a>
+                        {{/ddm.item}}
+                        {{#ddm.item (html-attributes role='menuitem')}}
+                            {{#global-link-to 'support' click=(action 'click' 'link' 'Navbar - Support' target=analytics)}}
+                                {{fa-icon 'life-ring'}}
+                                {{t 'auth_dropdown.osf_support'}}
+                            {{/global-link-to}}
+                        {{/ddm.item}}
+                        {{#ddm.item (html-attributes role='menuitem')}}
+                            <a href="{{settingsURL}}" onclick={{action 'click' 'link' 'Navbar - Settings' target=analytics}}>
+                                {{fa-icon 'cog'}}
+                                {{t 'general.settings'}}
+                            </a>
+                        {{/ddm.item}}
+                        {{#ddm.item (html-attributes role='menuitem')}}
+                            <a class="logoutLink" {{action 'logout'}} onclick={{action 'click' 'button' 'Navbar - Logout' target=analytics}} role="button">
+                                {{fa-icon 'sign-out'}}
+                                {{t 'auth_dropdown.log_out'}}
+                            </a>
+                        {{/ddm.item}}
+                    {{/dd.menu}}
+                {{/bs-dropdown}}
+            {{/nav.item}}
 
-        {{!-- {{#nav.button href=this.donateRoute}} --}}
-        {{!--     <h4>Join</h4> --}}
-        {{!-- {{/nav.button}} --}}
+        {{else}}
 
-        {{!-- {{#nav.button href=this.donateRoute}} --}}
-        {{!--     <h4>Login</h4> --}}
-        {{!-- {{/nav.button}} --}}
+            {{nav.divider classNames=(local-class 'HideOnMobile')}}
+
+            {{#nav.links.secondary href=this._signupURL}}
+                <h4>Join</h4>
+            {{/nav.links.secondary}}
+
+            {{#nav.buttons.secondary onclick=(action 'login')}}
+                <h4>Login</h4>
+            {{/nav.buttons.secondary}}
+
+        {{/if}}
 
     {{/nav.section}}
 
 {{/nav-bar}}
 
-{{#if (and this.showMobileSearchBox (media 'isMobile'))}}
-    {{icon-input 'search' class=(local-class 'MobileSearchBar') dark=true enter=(action '_onSearch')}}
-{{/if}}
+<div local-class="SearchDropdown {{if this.showSearchDropdown '' 'Closed'}}">
+    {{icon-input 'search' dark=true enter=(action '_onSearch')}}
+</div>

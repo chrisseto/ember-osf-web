@@ -15,10 +15,29 @@
     width: 1px;
 }
 
-// .Button {
-//     padding: 15px;
-//     color: $primary-blue;
-// }
+.Item {
+    &:active,
+    &:focus,
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.Primary {
+    &:active,
+    &:hover {
+        border-radius: 2px;
+        background-color: $secondary-green;
+    }
+}
+
+.Secondary {
+    &:active,
+    &:hover {
+        border-radius: 2px;
+        background-color: $secondary-blue;
+    }
+}
 
 .Icon {
     font-size: 20px;
@@ -65,23 +84,35 @@
 .Nav:global(.media-desktop) {
     padding: 0 15px;
 
-    & .Item {
+    & .Divider {
         margin: 0 10px;
+    }
+
+    & .Item {
+        padding: 0 10px;
     }
 }
 
 .Nav:global(.media-tablet) {
     padding: 0 10px;
 
-    & .Item {
+    & .Divider {
         margin: 0 10px;
+    }
+
+    & .Item {
+        padding: 0 10px;
     }
 }
 
 .Nav:global(.media-mobile) {
     padding: 0 5px;
 
-    & .Item {
+    & .Divider {
         margin: 0 15px;
+    }
+
+    & .Item {
+        padding: 0 15px;
     }
 }

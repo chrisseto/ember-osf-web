@@ -103,3 +103,19 @@
 :global(.media-tablet) .OnlyOnMobile {
     display: none;
 }
+
+.SearchDropdown {
+    height: 50px;
+    transition: height 0.4s;
+    overflow: hidden;
+    background: $dark-slate-gray;
+
+    &.Closed {
+        height: 0;
+    }
+
+    & span,
+    & input {
+        height: 100%;
+    }
+}
