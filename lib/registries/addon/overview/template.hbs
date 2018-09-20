@@ -1,10 +1,36 @@
 {{registries-title}}
 
 {{#if this.showMobileNav}}
-    {{registries-mobile-nav
-        toggleSidenav=(action 'toggleSidenav')
-        toggleMetadata=(action 'toggleMetadata')
-    }}
+    {{#nav-bar as |nav|}}
+        {{#nav.section}}
+
+            {{#nav.button onclick=(action 'toggleSidenav')}}
+                {{nav.icon (if this.sidenavGutterClosed 'bars' 'times')}}
+            {{/nav.button}}
+
+        {{/nav.section}}
+
+        {{#nav.section}}
+
+            {{#nav.button}}
+                Public
+                {{nav.icon 'eye'}}
+            {{/nav.button}}
+
+            {{nav.divider}}
+
+            {{#nav.button onclick=(action 'toggleMetadata')}}
+                {{nav.icon 'info-circle'}}
+            {{/nav.button}}
+
+            {{nav.divider}}
+
+            {{#nav.button}}
+                {{nav.icon 'ellipsis-v'}}
+            {{/nav.button}}
+
+        {{/nav.section}}
+    {{/nav-bar}}
 {{/if}}
 
 <div local-class="Container {{if (media 'isDesktop') 'Desktop'}}">
@@ -29,7 +55,6 @@
 
         {{/registries-sidenav}}
     {{/side-gutter}}
-
 
     <div local-class="Body {{this.animationClass}}">
         {{registration-schema-view this.model.registrationSchema.schema this.model.registeredMeta}}

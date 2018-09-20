@@ -1,22 +1,16 @@
-<header local-class="Navbar">
-
-    <span local-class="Brand">
+{{#nav-bar dark=true as |nav|}}
+    {{!-- Right Side (Band, Service Dropdown) --}}
+    {{#nav.section}}
 
         {{#global-link-to 'home' (html-attributes aria-label=(t 'navbar.go_home'))}}
             <div local-class="Logo"></div>
         {{/global-link-to}}
 
-        {{#link-to 'index' class=(local-class 'Service')}}
-            {{#unless (media 'isMobile')}}
-                <span>{{t 'general.OSF'}}</span>
-            {{/unless}}
-            <strong>REGISTRIES</strong>
-        {{/link-to}}
-
         {{#bs-dropdown as |dd|}}
-
-            {{#dd.toggle classNames=(local-class 'Toggle')}}
-                {{fa-icon (if dd.isOpen 'caret-up' 'caret-down') fixedWidth=true}}
+            {{#dd.toggle classNames=(local-class 'Service1 Dropdown')}}
+                <span local-class="HideOnMobile">{{t 'general.OSF'}}</span>
+                <strong>Registries</strong>
+                {{nav.icon (if dd.isOpen 'caret-up' 'caret-down')}}
             {{/dd.toggle}}
 
             {{#dd.menu classNames=(local-class 'ServiceList') as |ddm|}}
@@ -28,34 +22,57 @@
                     {{/ddm.item}}
                 {{/each}}
             {{/dd.menu}}
-
         {{/bs-dropdown}}
 
-    </span>
+    {{/nav.section}}
 
+    {{!-- Left Side (Search, Buttons, Gravatar, Dropdown) --}}
+    {{#nav.section}}
 
-    <div local-class="Content">
+        {{#nav.button classNames=(local-class 'OnlyOnMobile') onclick=(action 'toggleMobileSearch')}}
+            {{nav.icon 'search'}}
+        {{/nav.button}}
 
-        {{#if (media 'isMobile')}}
-            <a {{action 'toggleMobileSearch'}} role="button" local-class="MobileSearchButton">
-                {{fa-icon 'search' fixedWidth=true}}
-            </a>
-        {{else}}
-            {{icon-input 'search' class=(local-class 'SearchBar') dark=true enter=(action '_onSearch')}}
+        {{#nav.item classNames=(local-class 'HideOnMobile SearchBar')}}
+            {{icon-input 'search' dark=true enter=(action '_onSearch')}}
+        {{/nav.item}}
 
-            <a href={{this.helpRoute}} local-class="ButtonPrimary">{{t 'general.help'}}</a>
-            <a href={{this.donateRoute}} local-class="ButtonSucess">{{t 'navbar.donate'}}</a>
-        {{/if}}
+        {{#nav.link classNames=(local-class 'HideOnMobile') href=this.helpRoute}}
+            <h4>{{t 'general.help'}}</h4>
+        {{/nav.link}}
 
-        {{#bs-dropdown classNames=(local-class 'Center') as |dd|}}
-            {{#dd.toggle classNames=(local-class 'Center')}}
-                <img local-class="Gravatar" src="{{currentUser.user.profileImage}}&s=30">
-                {{fa-icon 'caret-down' fixedWidth=true class=(local-class 'Toggle')}}
-            {{/dd.toggle}}
-        {{/bs-dropdown}}
-    </div>
+        {{#nav.link classNames=(local-class 'HideOnMobile') href=this.donateRoute}}
+            <h4>{{t 'navbar.donate'}}</h4>
+        {{/nav.link}}
 
-</header>
+        {{nav.divider classNames=(local-class 'HideOnMobile')}}
+
+        {{#nav.item}}
+            {{#bs-dropdown as |dd|}}
+                {{#dd.toggle classNames=(local-class 'Dropdown')}}
+                    <img alt="User gravatar" local-class="Gravatar1" src="{{currentUser.user.profileImage}}&s=30">
+                    {{nav.icon (if dd.isOpen 'caret-up' 'caret-down')}}
+                {{/dd.toggle}}
+
+                {{#dd.menu as |ddm|}}
+                    {{#ddm.item}}
+                        Test Data
+                    {{/ddm.item}}
+                {{/dd.menu}}
+            {{/bs-dropdown}}
+        {{/nav.item}}
+
+        {{!-- {{#nav.button href=this.donateRoute}} --}}
+        {{!--     <h4>Join</h4> --}}
+        {{!-- {{/nav.button}} --}}
+
+        {{!-- {{#nav.button href=this.donateRoute}} --}}
+        {{!--     <h4>Login</h4> --}}
+        {{!-- {{/nav.button}} --}}
+
+    {{/nav.section}}
+
+{{/nav-bar}}
 
 {{#if (and this.showMobileSearchBox (media 'isMobile'))}}
     {{icon-input 'search' class=(local-class 'MobileSearchBar') dark=true enter=(action '_onSearch')}}

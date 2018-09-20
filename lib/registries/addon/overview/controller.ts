@@ -1,10 +1,13 @@
 import { action, computed } from '@ember-decorators/object';
+import { not } from '@ember-decorators/object/computed';
 import { service } from '@ember-decorators/service';
 import Controller from '@ember/controller';
 import Media from 'ember-responsive';
 
 export default class Overview extends Controller {
     @service media!: Media;
+
+    @not('media.isDesktop') showMobileNav!: boolean;
 
     sidenavGutterClosed = true;
     metadataGutterClosed = true;
@@ -14,11 +17,6 @@ export default class Overview extends Controller {
         return !this.metadataGutterClosed && this.metadataGutterMode === 'page'
             ? 'SlideRight'
             : '';
-    }
-
-    @computed('media.isDesktop', 'media.isMobile', 'media.isTablet')
-    get showMobileNav() {
-        return !this.media.isDesktop;
     }
 
     @computed('media.isDesktop', 'media.isMobile', 'media.isTablet')

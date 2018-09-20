@@ -1,27 +1,3 @@
-// Imports
-.ButtonPrimary {
-    composes: ButtonPrimary from 'registries/styles/ui';
-}
-
-.ButtonSucess {
-    composes: ButtonSucess from 'registries/styles/ui';
-}
-// /Imports
-
-
-.Navbar {
-    align-items: center;
-    justify-content: space-between;
-    background-color: $midnight-blue;
-    display: flex;
-    height: 50px;
-    padding: 10px;
-
-    i {
-        font-size: 20px;
-    }
-}
-
 .Brand {
     align-items: center;
     display: inline-flex;
@@ -35,18 +11,6 @@
     background-size: 100%;
     background-image: url('img/cos-logo-white.png');
     background-repeat: no-repeat;
-}
-
-
-.Service {
-    // margin: 0 5px;
-    color: $white;
-
-    &:hover,
-    &:focus {
-        color: $alto;
-        text-decoration: none;
-    }
 }
 
 .ServiceList {
@@ -63,54 +27,79 @@
     }
 }
 
-.Content {
-    display: flex;
-
-    & > * {
-        margin: 0 5px;
-    }
-}
-
-.Toggle {
-    color: $slate-gray;
-    font-size: 20px;
-
-    &:hover {
-        color: $secondary-blue;
-    }
-}
-
-.Gravatar {
-    margin-right: 5px;
-    border-radius: 25px;
-}
-
-.Center {
-    display: inline-flex;
-    align-items: center;
-}
-
-.MobileSearchButton {
-    composes: Center;
-
-    color: $alto;
-    font-size: 24px;
-
-    &:hover,
-    &:focus {
-        color: $slate-gray;
-        text-decoration: none;
-    }
-}
-
-.SearchBar {
-    width: 300px;
-}
-
 .MobileSearchBar {
     width: 100%;
 
     & > input {
         border-radius: 0;
     }
+}
+
+
+.Service1 {
+    color: $white;
+    font-size: 20px;
+
+
+    & > strong {
+        text-transform: uppercase;
+        margin-right: -5px;
+    }
+}
+
+.Gravatar1 {
+    .Dropdown:hover &,
+    // Bootstrap interop
+    :global(.open) & {
+        opacity: 0.8;
+    }
+}
+
+.Dropdown {
+    &:active,
+    &:focus,
+    &:hover {
+        color: $white;
+        text-decoration: none;
+    }
+
+    &:hover,
+    // Bootstrap interop
+    :global(.open) & {
+        color: $slate-gray;
+
+        & i:global(.fa) {
+            color: $secondary-blue;
+        }
+    }
+}
+
+.SearchBar {
+    :global(.media-desktop) & {
+        width: 300px;
+    }
+
+    :global(.media-tablet) & {
+        width: 200px;
+    }
+
+    :global(.media-mobile) & {
+        display: none;
+    }
+
+    & i {
+        font-size: 20px;
+    }
+}
+
+:global(.media-mobile) .HideOnMobile {
+    display: none;
+}
+
+:global(.media-desktop) .OnlyOnMobile {
+    display: none;
+}
+
+:global(.media-tablet) .OnlyOnMobile {
+    display: none;
 }
