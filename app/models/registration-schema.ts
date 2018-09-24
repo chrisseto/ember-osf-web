@@ -22,7 +22,7 @@ export interface Question extends Q {
     title: string;
     nav: string;
     help?: string;
-    description: string;
+    description?: string;
 }
 
 export interface Page {

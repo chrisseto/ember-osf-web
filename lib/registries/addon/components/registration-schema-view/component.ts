@@ -68,7 +68,7 @@ export class Question {
         return new Question(
             question.nav,
             question.title,
-            question.description,
+            question.description || '',
             props.map(prop => Answerable.parse(prop, ans)),
         );
     }
