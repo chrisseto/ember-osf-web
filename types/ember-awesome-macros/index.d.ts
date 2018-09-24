@@ -1,3 +1,4 @@
+// eslint-disable import/export
 declare module 'ember-awesome-macros' {
     export function raw<T>(value: T): T;
     export function toStr(key: string): string;
@@ -15,3 +16,4 @@ declare module 'ember-awesome-macros/raw' {
 declare module 'ember-awesome-macros/conditional' {
     export { conditional as default } from 'ember-awesome-macros';
 }
+// eslint-enable import/export

@@ -16,7 +16,7 @@ export default class Gutter extends Component {
     side!: GutterSide;
 
     mode: GutterMode = defaultTo(this.mode, 'column');
-    closed: boolean = defaultTo(this.closed, true);
+    closed: boolean = defaultTo(this.closed, true); // eslint-disable-line no-restricted-globals
 
     @computed('mode')
     get globalClasses() {

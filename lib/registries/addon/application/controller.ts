@@ -10,7 +10,7 @@ export default class Application extends Controller {
     @action
     search(query: string) {
         this.transitionToRoute('discover', {
-            queryParams: { query: query },
+            queryParams: { query },
         });
     }
 }

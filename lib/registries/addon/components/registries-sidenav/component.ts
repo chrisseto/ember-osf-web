@@ -3,7 +3,7 @@ import { action } from '@ember-decorators/object';
 import Component from '@ember/component';
 import { localClassNames, localClassName } from 'ember-osf-web/decorators/css-modules';
 import defaultTo from 'ember-osf-web/utils/default-to';
-import { conditional, raw, toStr } from 'registries/macros'
+import { conditional, raw, toStr } from 'registries/macros';
 import styles from './styles';
 import template from './template';
 

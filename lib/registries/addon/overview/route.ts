@@ -11,7 +11,7 @@ export default class OverView extends Route {
     async model() {
         // TODO Loading/Pending States
         // TODO Withdrawn, Embargo'd, etc
-        return await this.store.findRecord('registration', '3qm6a', {
+        return this.store.findRecord('registration', '3qm6a', {
             include: ['registration_schema'],
         });
     }

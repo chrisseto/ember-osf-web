@@ -11,7 +11,6 @@ import template from './template';
 @layout(template)
 // @localClassNames('Title')
 export default class TitleBar extends Component {
-
     get guid(): string {
         return guidFor(this);
     }
