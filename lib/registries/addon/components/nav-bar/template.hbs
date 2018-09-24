@@ -1,4 +1,4 @@
-<nav role="navigation" class="{{this.media.classNames}}" local-class="Nav {{if this.dark 'Dark' 'Light'}}">
+<nav data-test-nav role="navigation" class="{{this.media.classNames}}" local-class="Nav {{if this.dark 'Dark' 'Light'}}">
     {{yield (hash
         icon=(component 'fa-icon' fixedWidth=true class=(local-class 'Icon'))
         divider=(component 'x-dummy' class=(local-class 'Divider'))

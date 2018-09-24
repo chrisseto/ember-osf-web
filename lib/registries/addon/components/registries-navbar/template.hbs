@@ -2,18 +2,18 @@
     {{!-- Right Side (Band, Service Dropdown) --}}
     {{#nav.section}}
 
-        {{#global-link-to 'home' (html-attributes aria-label=(t 'navbar.go_home'))}}
+        {{#global-link-to data-test-brand 'home' (html-attributes aria-label=(t 'navbar.go_home'))}}
             <div local-class="Logo"></div>
         {{/global-link-to}}
 
         {{#bs-dropdown as |dd|}}
-            {{#dd.toggle classNames=(local-class 'Service1 Dropdown')}}
+            {{#dd.toggle data-test-service classNames=(local-class 'Service1 Dropdown')}}
                 <span local-class="HideOnMobile">{{t 'general.OSF'}}</span>
-                <strong>Registries</strong>
+                <strong>{{t 'general.services.registries'}}</strong>
                 {{nav.icon (if dd.isOpen 'caret-up' 'caret-down')}}
             {{/dd.toggle}}
 
-            {{#dd.menu classNames=(local-class 'ServiceList') as |ddm|}}
+            {{#dd.menu data-test-service-list classNames=(local-class 'ServiceList') as |ddm|}}
                 {{#each services as |service|}}
                     {{#ddm.item (html-attributes role='menuitem')}}
                         {{#hyper-link service.route}}
@@ -29,19 +29,19 @@
     {{!-- Left Side (Search, Buttons, Gravatar, Dropdown) --}}
     {{#nav.section}}
 
-        {{#nav.button classNames=(local-class 'OnlyOnMobile') onclick=(action 'toggleMobileSearch')}}
+        {{#nav.button data-test-search-toggle classNames=(local-class 'OnlyOnMobile') onclick=(action 'toggleMobileSearch')}}
             {{nav.icon 'search'}}
         {{/nav.button}}
 
-        {{#nav.item classNames=(local-class 'HideOnMobile SearchBar')}}
+        {{#nav.item data-test-search-bar classNames=(local-class 'HideOnMobile SearchBar')}}
             {{icon-input 'search' dark=true enter=(action '_onSearch')}}
         {{/nav.item}}
 
-        {{#nav.links.secondary classNames=(local-class 'HideOnMobile') href=this.helpRoute}}
+        {{#nav.links.secondary data-test-help classNames=(local-class 'HideOnMobile') href=this.helpRoute}}
             <h4>{{t 'general.help'}}</h4>
         {{/nav.links.secondary}}
 
-        {{#nav.links.primary classNames=(local-class 'HideOnMobile') href=this.donateRoute}}
+        {{#nav.links.primary data-test-donate classNames=(local-class 'HideOnMobile') href=this.donateRoute}}
             <h4>{{t 'navbar.donate'}}</h4>
         {{/nav.links.primary}}
 
@@ -50,11 +50,11 @@
             {{#nav.item}}
                 {{#bs-dropdown as |dd|}}
                     {{#dd.toggle classNames=(local-class 'Dropdown')}}
-                        <img alt="{{t 'auth_dropdown.user_gravatar'}}" local-class="Gravatar1" src="{{currentUser.user.profileImage}}&s=30">
+                        <img data-test-gravatar alt="{{t 'auth_dropdown.user_gravatar'}}" local-class="Gravatar1" src="{{currentUser.user.profileImage}}&s=30">
                         {{nav.icon (if dd.isOpen 'caret-up' 'caret-down')}}
                     {{/dd.toggle}}
 
-                    {{#dd.menu classNames='dropdown-menu-right' as |ddm|}}
+                    {{#dd.menu data-test-auth-dropdown classNames='dropdown-menu-right' as |ddm|}}
                         {{#ddm.item (html-attributes role='menuitem')}}
                             <a href="{{profileURL}}" onclick={{action 'click' 'link' 'Navbar - MyProfile' target=analytics}}>
                                 {{fa-icon 'user'}}
@@ -87,12 +87,12 @@
 
             {{nav.divider classNames=(local-class 'HideOnMobile')}}
 
-            {{#nav.links.secondary href=this._signupURL}}
-                <h4>Join</h4>
+            {{#nav.links.secondary data-test-join href=this._signupURL}}
+                <h4>{{t 'navbar.join'}}</h4>
             {{/nav.links.secondary}}
 
-            {{#nav.buttons.secondary onclick=(action 'login')}}
-                <h4>Login</h4>
+            {{#nav.buttons.secondary data-test-login onclick=(action 'login')}}
+                <h4>{{t 'navbar.login'}}</h4>
             {{/nav.buttons.secondary}}
 
         {{/if}}
@@ -101,6 +101,6 @@
 
 {{/nav-bar}}
 
-<div local-class="SearchDropdown {{if this.showSearchDropdown '' 'Closed'}}">
+<div data-test-search-bar-mobile local-class="SearchDropdown {{if this.showSearchDropdown '' 'Closed'}}">
     {{icon-input 'search' dark=true enter=(action '_onSearch')}}
 </div>
