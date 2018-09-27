@@ -1,12 +1,8 @@
-// $width-expanded: 15em;
-// $width-collapsed: 5em;
-
 $width-expanded: 205px;
 $width-collapsed: 80px;
 
 .SideNav {
     padding: 20px;
-    // border-right: $alto 1px solid;
     display: flex;
     flex-direction: column;
     flex-grow: 0;
@@ -18,18 +14,6 @@ $width-collapsed: 80px;
     & > div {
         margin: 5px 0;
     }
-
-    // z-index: 10;
-    // position: relative;
-    // &::before {
-    //     content: '';
-    //     position: absolute;
-    //     top: 1px;
-    //     bottom: 1px;
-    //     left: 1px;
-    //     right: 1px;
-    //     border: green 10px solid;
-    // }
 
     height: 100%;
 
